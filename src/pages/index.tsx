@@ -3,14 +3,14 @@ import { type NextPage } from "next";
 import { MutableRefObject, useRef, useState } from "react";
 interface IBorderRadius {
   [key: string]: string;
-  topLeftLeft: string;
-  topLeftRight: string;
-  topRightLeft: string;
-  topRightRight: string;
-  bottomLeftLeft: string;
-  bottomLeftRight: string;
-  bottomRightLeft: string;
-  bottomRightRight: string;
+  verticalTopLeft: string;
+  horizontalTopLeft: string;
+  horizontalTopRight: string;
+  verticalTopRight: string;
+  verticalBottomLeft: string;
+  horizontalBottomLeft: string;
+  horizontalBottomRight: string;
+  verticalBottomRight: string;
 }
 const Home: NextPage = () => {
   const [copySuccess, setCopySuccess] = useState<boolean>(false);
@@ -20,14 +20,14 @@ const Home: NextPage = () => {
   const [numStart, setNumStart] = useState<number>(0);
 
   const [borderRadius, setBorderRadius] = useState<IBorderRadius>({
-    topLeftLeft: "10",
-    topLeftRight: "10",
-    topRightLeft: "10",
-    topRightRight: "10",
-    bottomLeftLeft: "10",
-    bottomLeftRight: "10",
-    bottomRightLeft: "10",
-    bottomRightRight: "10",
+    verticalTopLeft: "10",
+    horizontalTopLeft: "10",
+    horizontalTopRight: "10",
+    verticalTopRight: "10",
+    verticalBottomLeft: "10",
+    horizontalBottomLeft: "10",
+    horizontalBottomRight: "10",
+    verticalBottomRight: "10",
   });
 
   const mouseDownHandler = (e: React.MouseEvent<HTMLInputElement>): void => {
@@ -72,9 +72,9 @@ const Home: NextPage = () => {
       <div className="mb-4 flex h-10 w-96 justify-between ">
         <input
           type="text"
-          value={borderRadius.topLeftRight}
+          value={borderRadius.horizontalTopLeft}
           className="z-10 h-7 w-8 cursor-ns-resize appearance-none rounded border border-black outline-none"
-          name="topLeftRight"
+          name="horizontalTopLeft"
           onChange={onChangeRadiusHandler}
           onMouseDown={mouseDownHandler}
           min={0}
@@ -83,9 +83,9 @@ const Home: NextPage = () => {
         />
         <input
           type="text"
-          value={borderRadius.topRightLeft}
+          value={borderRadius.horizontalTopRight}
           className="h-7 w-8 cursor-ns-resize appearance-none rounded border border-black"
-          name="topRightLeft"
+          name="horizontalTopRight"
           onChange={onChangeRadiusHandler}
           onMouseDown={mouseDownHandler}
           min={0}
@@ -97,9 +97,9 @@ const Home: NextPage = () => {
         <div className="mr-5 grid flex-col content-between">
           <input
             type="text"
-            value={borderRadius.topLeftLeft}
+            value={borderRadius.verticalTopLeft}
             className="h-7 w-8 cursor-ns-resize rounded border border-black"
-            name="topLeftLeft"
+            name="verticalTopLeft"
             onChange={onChangeRadiusHandler}
             onMouseDown={mouseDownHandler}
             min={0}
@@ -107,9 +107,9 @@ const Home: NextPage = () => {
           />
           <input
             type="text"
-            value={borderRadius.bottomLeftLeft}
+            value={borderRadius.verticalBottomLeft}
             className=" h-7 w-8 cursor-ns-resize rounded border border-black"
-            name="bottomLeftLeft"
+            name="verticalBottomLeft"
             onChange={onChangeRadiusHandler}
             onMouseDown={mouseDownHandler}
             min={0}
@@ -120,10 +120,10 @@ const Home: NextPage = () => {
         <div
           className=" h-96 w-96 "
           style={{
-            borderStartStartRadius: ` ${borderRadius.topLeftRight}% ${borderRadius.topLeftLeft}%`,
-            borderStartEndRadius: `${borderRadius.topRightLeft}% ${borderRadius.topRightRight}%`,
-            borderEndStartRadius: `${borderRadius.bottomLeftRight}% ${borderRadius.bottomLeftLeft}% `,
-            borderEndEndRadius: `${borderRadius.bottomRightLeft}% ${borderRadius.bottomRightRight}%`,
+            borderStartStartRadius: ` ${borderRadius.horizontalTopLeft}% ${borderRadius.verticalTopLeft}%`,
+            borderStartEndRadius: `${borderRadius.horizontalTopRight}% ${borderRadius.verticalTopRight}%`,
+            borderEndStartRadius: `${borderRadius.horizontalBottomLeft}% ${borderRadius.verticalBottomLeft}% `,
+            borderEndEndRadius: `${borderRadius.horizontalBottomRight}% ${borderRadius.verticalBottomRight}%`,
             background: "linear-gradient(145deg, #1c3661, #172d52)",
             boxShadow: `12px 12px 23px #0a1424, -12px -12px 23px #2a5092`,
           }}
@@ -131,9 +131,9 @@ const Home: NextPage = () => {
         <div className="ml-5 grid content-between">
           <input
             type="text"
-            value={borderRadius.topRightRight}
+            value={borderRadius.verticalTopRight}
             className="h-7 w-8 cursor-ns-resize rounded border border-black"
-            name="topRightRight"
+            name="verticalTopRight"
             onChange={onChangeRadiusHandler}
             onMouseDown={mouseDownHandler}
             min={0}
@@ -141,9 +141,9 @@ const Home: NextPage = () => {
           />
           <input
             type="text"
-            value={borderRadius.bottomRightRight}
+            value={borderRadius.verticalBottomRight}
             className="h-7 w-8 cursor-ns-resize rounded border border-black"
-            name="bottomRightRight"
+            name="verticalBottomRight"
             onChange={onChangeRadiusHandler}
             onMouseDown={mouseDownHandler}
             min={0}
@@ -155,9 +155,9 @@ const Home: NextPage = () => {
       <div className="mt-5 flex h-10 w-96 justify-between ">
         <input
           type="text"
-          value={borderRadius.bottomLeftRight}
+          value={borderRadius.horizontalBottomLeft}
           className="h-7 w-8 cursor-ns-resize rounded border border-black"
-          name="bottomLeftRight"
+          name="horizontalBottomLeft"
           onChange={onChangeRadiusHandler}
           onMouseDown={mouseDownHandler}
           min={0}
@@ -165,9 +165,9 @@ const Home: NextPage = () => {
         />
         <input
           type="text"
-          value={borderRadius.bottomRightLeft}
+          value={borderRadius.horizontalBottomRight}
           className="h-7 w-8 cursor-ns-resize rounded border border-black"
-          name="bottomRightLeft"
+          name="horizontalBottomRight"
           onChange={onChangeRadiusHandler}
           onMouseDown={mouseDownHandler}
           min={0}
@@ -176,24 +176,25 @@ const Home: NextPage = () => {
       </div>
 
       <p className="text-gray-100">
-        border-radius: {borderRadius.topLeftRight}% {borderRadius.topRightLeft}%{" "}
-        {borderRadius.bottomLeftRight}% {borderRadius.bottomRightLeft}% /{" "}
-        {borderRadius.topLeftLeft}% {borderRadius.topRightRight}%{" "}
-        {borderRadius.bottomLeftLeft}% {borderRadius.bottomRightRight}%
+        border-radius: {borderRadius.horizontalTopLeft}%{" "}
+        {borderRadius.horizontalTopRight}% {borderRadius.horizontalBottomRight}%{" "}
+        {borderRadius.horizontalBottomLeft}% / {borderRadius.verticalTopLeft}%{" "}
+        {borderRadius.verticalTopRight}% {borderRadius.verticalBottomRight}%{" "}
+        {borderRadius.verticalBottomLeft}%
       </p>
       <button
         className="m-1 border border-black bg-gradient-to-r from-[#BCED0C] to-[#1ac929] p-3"
         onClick={() => {
           navigator.clipboard.writeText(
-            `border-radius: ${borderRadius.topLeftRight}% ${borderRadius.topRightLeft}% ${borderRadius.bottomLeftRight}% ${borderRadius.bottomRightLeft}% / ${borderRadius.topLeftLeft}% ${borderRadius.topRightRight}% ${borderRadius.bottomLeftLeft}% ${borderRadius.bottomRightRight}%`
+            `border-radius: ${borderRadius.horizontalTopLeft}% ${borderRadius.horizontalTopRight}% ${borderRadius.horizontalBottomRight}% ${borderRadius.horizontalBottomLeft}% / ${borderRadius.verticalTopLeft}% ${borderRadius.verticalTopRight}% ${borderRadius.verticalBottomRight}% ${borderRadius.verticalBottomLeft}%`
           );
           setCopySuccess(true);
         }}
         style={{
-          borderStartStartRadius: `${borderRadius.topLeftRight}% ${borderRadius.topLeftLeft}% `,
-          borderStartEndRadius: `${borderRadius.topRightLeft}% ${borderRadius.topRightRight}%`,
-          borderEndStartRadius: `${borderRadius.bottomLeftRight}% ${borderRadius.bottomLeftLeft}% `,
-          borderEndEndRadius: `${borderRadius.bottomRightLeft}% ${borderRadius.bottomRightRight}%`,
+          borderStartStartRadius: `${borderRadius.horizontalTopLeft}% ${borderRadius.verticalTopLeft}% `,
+          borderStartEndRadius: `${borderRadius.horizontalTopRight}% ${borderRadius.verticalTopRight}%`,
+          borderEndStartRadius: `${borderRadius.horizontalBottomLeft}% ${borderRadius.verticalBottomLeft}% `,
+          borderEndEndRadius: `${borderRadius.horizontalBottomRight}% ${borderRadius.verticalBottomRight}%`,
         }}
       >
         Copy to clipboard
